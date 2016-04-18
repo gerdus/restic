@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"errors"
 	"io"
+	"os"
 	"strings"
 
 	"github.com/minio/minio-go"
@@ -31,6 +32,8 @@ func Open(cfg Config) (backend.Backend, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	client.TraceOn(os.Stderr)
 
 	be := &s3{client: client, bucketname: cfg.Bucket, prefix: cfg.Prefix}
 	be.createConnections()
