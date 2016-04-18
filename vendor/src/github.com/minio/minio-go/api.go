@@ -550,7 +550,7 @@ func (c Client) newRequest(method string, metadata requestMetadata) (req *http.R
 	}
 
 	// set 'Expect' header for the request.
-	req.Header.Set("Expect", "100-continue")
+	// req.Header.Set("Expect", "100-continue")
 
 	// set 'User-Agent' header for the request.
 	c.setUserAgent(req)
